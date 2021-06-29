@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>jdk9</module>
+        <module>jdk10</module>
     </modules>
 
     <name>newjdkfeatures</name>
