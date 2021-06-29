@@ -2,7 +2,7 @@ package com.thegreatapi.newjdkfeatures.jdk9;
 
 import java.util.*;
 
-@SuppressWarnings({"unused", "InterfaceMayBeAnnotatedFunctional"})
+@SuppressWarnings("unused")
 public interface FactoryMethodsForCollections {
 
     List<Point> createList();
