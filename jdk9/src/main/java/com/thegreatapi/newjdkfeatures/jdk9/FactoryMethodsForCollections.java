@@ -1,6 +1,9 @@
 package com.thegreatapi.newjdkfeatures.jdk9;
 
+import com.thegreatapi.newjdkfeatures.model.Point;
+
 import java.util.*;
+import java.util.List;
 
 @SuppressWarnings("unused")
 public interface FactoryMethodsForCollections {
@@ -64,16 +67,6 @@ public interface FactoryMethodsForCollections {
                     "a", new Point(1, 1),
                     "b", new Point(2, 2)
             );
-        }
-    }
-
-    class Point {
-        private final int x;
-        private final int y;
-
-        private Point(int x, int y) {
-            this.x = x;
-            this.y = y;
         }
     }
 }

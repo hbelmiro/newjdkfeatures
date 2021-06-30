@@ -11,6 +11,7 @@
     <modules>
         <module>jdk9</module>
         <module>jdk10</module>
+        <module>model</module>
     </modules>
 
     <name>newjdkfeatures</name>
