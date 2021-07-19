@@ -14,12 +14,30 @@ public interface MethodsForObjects {
 
         @Override
         public String requireNonNullElse(@Nullable String value) {
-            return value != null ? value : getDefaultValue();
+            if (value != null) {
+                return value;
+            } else {
+                String defaultValue = getDefaultValue();
+                if (defaultValue != null) {
+                    return defaultValue;
+                } else {
+                    throw new NullPointerException();
+                }
+            }
         }
 
         @Override
         public String requireNonNullElseGet(@Nullable String value) {
-            return value != null ? value : getDefaultValue();
+            if (value != null) {
+                return value;
+            } else {
+                String defaultValue = getDefaultValue();
+                if (defaultValue != null) {
+                    return defaultValue;
+                } else {
+                    throw new NullPointerException();
+                }
+            }
         }
     }
 
@@ -27,7 +45,7 @@ public interface MethodsForObjects {
 
         @Override
         public String requireNonNullElse(@Nullable String value) {
-            return Objects.requireNonNullElse(value, "default value");
+            return Objects.requireNonNullElse(value, getDefaultValue());
         }
 
         @Override
