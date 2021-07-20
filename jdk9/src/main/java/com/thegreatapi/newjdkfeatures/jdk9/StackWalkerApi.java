@@ -1,5 +1,6 @@
 package com.thegreatapi.newjdkfeatures.jdk9;
 
+import java.lang.StackWalker.StackFrame;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -22,8 +23,7 @@ public interface StackWalkerApi {
                                                                     .map(Class::getName)
                                                                     .collect(Collectors.toList());
 
-            return Arrays.stream(Thread.currentThread()
-                                       .getStackTrace())
+            return Arrays.stream(Thread.currentThread().getStackTrace())
                          .map(StackTraceElement::getClassName)
                          .filter(interestingClassNames::contains)
                          .findFirst()
@@ -41,10 +41,10 @@ public interface StackWalkerApi {
 
         @Override
         public Optional<Class<?>> findClassInStack() {
-            return StackWalker.getInstance(RETAIN_CLASS_REFERENCE).walk(stackFrameStream ->
-                    stackFrameStream.<Class<?>>map(StackWalker.StackFrame::getDeclaringClass)
-                                    .filter(INTERESTING_CLASSES::contains)
-                                    .findFirst());
+            return StackWalker.getInstance(RETAIN_CLASS_REFERENCE)
+                              .walk(stackFrameStream -> stackFrameStream.<Class<?>>map(StackFrame::getDeclaringClass)
+                                                                        .filter(INTERESTING_CLASSES::contains)
+                                                                        .findFirst());
         }
     }
 }

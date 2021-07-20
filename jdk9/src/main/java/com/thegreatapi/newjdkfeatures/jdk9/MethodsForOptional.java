@@ -10,7 +10,7 @@ public interface MethodsForOptional {
 
     void or();
 
-    private static Optional<String> getWebSite() {
+    private static Optional<String> getWebsite() {
         if (Instant.now().toEpochMilli() % 2 == 0) {
             return Optional.of("thegreatapi.com");
         } else {
@@ -26,26 +26,22 @@ public interface MethodsForOptional {
         }
     }
 
-    private static void handleExistingWebSite(String webSite) {
-        System.out.println(webSite);
-    }
-
     class Jdk8 implements MethodsForOptional {
 
         @Override
         public void ifPresentOrElse() {
-            Optional<String> webSite = getWebSite();
+            Optional<String> website = getWebsite();
 
-            if (webSite.isPresent()) {
-                handleExistingWebSite(webSite.get());
+            if (website.isPresent()) {
+                System.out.println(website.get());
             } else {
-                System.err.println("A web site wasn't set");
+                System.err.println("A website wasn't set");
             }
         }
 
         @Override
         public void or() {
-            Optional<String> contact = getWebSite();
+            Optional<String> contact = getWebsite();
 
             if (!contact.isPresent()) {
                 contact = getTwitterHandle();
@@ -60,15 +56,15 @@ public interface MethodsForOptional {
 
         @Override
         public void ifPresentOrElse() {
-            getWebSite().ifPresentOrElse(
-                    MethodsForOptional::handleExistingWebSite,
-                    () -> System.err.println("A web site wasn't set")
+            getWebsite().ifPresentOrElse(
+                    System.out::println,
+                    () -> System.err.println("A website wasn't set")
             );
         }
 
         @Override
         public void or() {
-            getWebSite().or(MethodsForOptional::getTwitterHandle)
+            getWebsite().or(MethodsForOptional::getTwitterHandle)
                         .ifPresent(System.out::println);
         }
     }
