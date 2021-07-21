@@ -13,6 +13,7 @@
         <module>jdk10</module>
         <module>model</module>
         <module>jdk12</module>
+        <module>jdk11</module>
     </modules>
 
     <name>newjdkfeatures</name>
