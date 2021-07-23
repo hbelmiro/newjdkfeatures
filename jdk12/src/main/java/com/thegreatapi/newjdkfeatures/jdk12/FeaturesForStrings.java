@@ -1,5 +1,8 @@
 package com.thegreatapi.newjdkfeatures.jdk12;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 @SuppressWarnings({"StringRepeatCanBeUsed", "unused"})
 @FunctionalInterface
 public interface FeaturesForStrings {
@@ -10,12 +13,15 @@ public interface FeaturesForStrings {
 
         @Override
         public String indentation(String s, int indentationSize) {
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < indentationSize; i++) {
-                stringBuilder.append(' ');
-            }
-            stringBuilder.append(s);
-            return stringBuilder.toString();
+            return Stream.of(s.split(System.lineSeparator()))
+                         .map(line -> {
+                             StringBuilder stringBuilder = new StringBuilder();
+                             for (int i = 0; i < indentationSize; i++) {
+                                 stringBuilder.append(' ');
+                             }
+                             stringBuilder.append(line);
+                             return stringBuilder.toString();
+                         }).collect(Collectors.joining(System.lineSeparator()));
         }
     }
 
@@ -23,7 +29,9 @@ public interface FeaturesForStrings {
 
         @Override
         public String indentation(String s, int indentationSize) {
-            return " ".repeat(indentationSize) + s;
+            return s.lines()
+                    .map(line -> " ".repeat(indentationSize) + line)
+                    .collect(Collectors.joining(System.lineSeparator()));
         }
     }
 
