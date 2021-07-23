@@ -15,6 +15,8 @@
         <module>jdk12</module>
         <module>jdk11</module>
         <module>jdk15</module>
+        <module>jdk16</module>
+        <module>jdk17</module>
     </modules>
 
     <name>newjdkfeatures</name>
