@@ -21,7 +21,7 @@ public interface FeaturesForStrings {
                              }
                              stringBuilder.append(line);
                              return stringBuilder.toString();
-                         }).collect(Collectors.joining(System.lineSeparator()));
+                         }).collect(Collectors.joining(System.lineSeparator(), "", System.lineSeparator()));
         }
     }
 
@@ -31,7 +31,7 @@ public interface FeaturesForStrings {
         public String indentation(String s, int indentationSize) {
             return s.lines()
                     .map(line -> " ".repeat(indentationSize) + line)
-                    .collect(Collectors.joining(System.lineSeparator()));
+                    .collect(Collectors.joining(System.lineSeparator(), "", System.lineSeparator()));
         }
     }
 
