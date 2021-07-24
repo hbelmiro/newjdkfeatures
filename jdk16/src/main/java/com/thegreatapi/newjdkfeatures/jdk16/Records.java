@@ -1,5 +1,7 @@
 package com.thegreatapi.newjdkfeatures.jdk16;
 
+import lombok.*;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -57,6 +59,20 @@ public interface Records {
                         ", country=" + country +
                         ']';
             }
+        }
+    }
+
+    class ProjectLombok {
+        @SuppressWarnings("ClassCanBeRecord")
+
+
+        @AllArgsConstructor
+        @ToString
+        @EqualsAndHashCode
+        static class Person {
+            @Getter private final String name;
+            @Getter private final LocalDate dateOfBirth;
+            @Getter private final String country;
         }
     }
 

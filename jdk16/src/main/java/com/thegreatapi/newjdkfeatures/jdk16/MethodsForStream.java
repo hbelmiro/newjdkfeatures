@@ -1,5 +1,6 @@
 package com.thegreatapi.newjdkfeatures.jdk16;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -8,6 +9,15 @@ import java.util.stream.Stream;
 public interface MethodsForStream {
 
     void toList(Stream<String> stream);
+
+    @SuppressWarnings("FuseStreamOperations")
+    class Jdk8 implements MethodsForStream {
+
+        @Override
+        public void toList(Stream<String> stream) {
+            List<String> list = Collections.unmodifiableList(stream.collect(Collectors.toList()));
+        }
+    }
 
     @SuppressWarnings("SimplifyStreamApiCallChains")
     class Jdk15 implements MethodsForStream {
