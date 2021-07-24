@@ -63,9 +63,6 @@ public interface Records {
     }
 
     class ProjectLombok {
-        @SuppressWarnings("ClassCanBeRecord")
-
-
         @AllArgsConstructor
         @ToString
         @EqualsAndHashCode
