@@ -17,6 +17,11 @@ public interface StackWalkerApi {
 
     class Jdk8 implements StackWalkerApi {
 
+        public Class<?> findClassInStackBAD() throws ClassNotFoundException {
+            StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[4];
+            return Class.forName(stackTraceElement.getClassName());
+        }
+
         @Override
         public Optional<Class<?>> findClassInStack() {
             List<String> interestingClassNames = INTERESTING_CLASSES.stream()
