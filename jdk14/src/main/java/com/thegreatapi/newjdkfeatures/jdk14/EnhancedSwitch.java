@@ -4,6 +4,7 @@ public interface EnhancedSwitch {
 
     int getValue(DayOfWeek dayOfWeek);
 
+    @SuppressWarnings("EnhancedSwitchMigration")
     class Jdk8 implements EnhancedSwitch {
 
         @Override
